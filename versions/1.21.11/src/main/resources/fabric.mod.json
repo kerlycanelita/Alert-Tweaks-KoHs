@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Low-health vignette, heartbeat alert and directional threat indicator.",
+  "icon": "assets/alert_tweaks/icon.png",
+  "authors": [
+    "zymekoh"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "dev.zymekoh.alerttweaks.AlertTweaks"
+    ],
+    "client": [
+      "dev.zymekoh.alerttweaks.client.AlertTweaksClient"
+    ],
+    "modmenu": [
+      "dev.zymekoh.alerttweaks.client.gui.AlertTweaksModMenu"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
