@@ -48,12 +48,11 @@ When another player damages you, an arrow appears around the crosshair pointing 
 - **Five seconds per hit**, then a fade-out. Each new hit from the same player refreshes their own arrow rather than stacking another. Up to four attackers are tracked at once; a fifth pushes out the stalest.
 - **Animation.** The arrow punches out of the crosshair behind a shockwave with a slight overshoot, breathes while it holds, and on the way out drifts outward and grows while a second ring expands behind it.
 
-### Sizing
-
-The indicator has exactly two options:
+### Sizing and placement
 
 - **Adaptive Size** — on by default. The arrow is sized as a constant fraction of the GUI height, which cancels out the GUI scale and keeps it the same physical size on screen at any setting.
 - **Scale** — 50% to 250%. Moving this slider turns Adaptive Size off, which is the intended way to take manual control.
+- **Distance** — 0% to 100%, how far from the crosshair the arrows orbit. At 0% they sit just clear of the crosshair without covering it; at 100% they push out towards the edge of the view. It follows the scale, so changing size keeps the ring proportional.
 
 ### How the hit is detected
 
@@ -78,7 +77,7 @@ One consequence worth stating plainly: while an arrow is alive it reports the at
 
 Settings live in `config/alert_tweaks.json` and are written when the screen closes, not on every slider movement. The screen has two tabs:
 
-- **Tweaks** — vignette color, threshold, opacity, reach, smooth fade, static color, heartbeat pulse, and the Threat Indicator section.
+- **Tweaks** — vignette color, threshold, opacity, reach, smooth fade, static color, heartbeat pulse, and the Threat Indicator section (adaptive size, scale, and distance from the crosshair).
 - **Sound** — heartbeat volume, tempo, low-health linking, and a Play button that previews four beats with the current settings.
 
 ## Building

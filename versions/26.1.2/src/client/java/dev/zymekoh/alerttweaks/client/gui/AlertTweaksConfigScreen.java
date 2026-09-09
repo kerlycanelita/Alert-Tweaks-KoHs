@@ -352,6 +352,15 @@ public final class AlertTweaksConfigScreen extends Screen {
 					config.threatAdaptiveScale = false;
 				},
 				ValueSlider::formatPercent));
+			y += SLIDER_STEP;
+
+			this.addScrollableChild(new BranchValueSlider(this.contentX + BRANCH_INDENT, y, this.contentWidth - BRANCH_INDENT,
+				SLIDER_HEIGHT,
+				"Distance",
+				"How far from the crosshair the arrows sit. At 0% they stay just clear of it.",
+				0.0, 1.0, 0.05, config.threatDistance,
+				value -> config.threatDistance = (float)value,
+				ValueSlider::formatPercent));
 		}
 	}
 
@@ -663,7 +672,7 @@ public final class AlertTweaksConfigScreen extends Screen {
 		}
 		height += CONTROL_STEP;
 		if (config.threatIndicatorEnabled) {
-			height += CONTROL_STEP + SLIDER_STEP;
+			height += CONTROL_STEP + SLIDER_STEP + SLIDER_STEP;
 		}
 		return height;
 	}

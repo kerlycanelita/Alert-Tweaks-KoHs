@@ -39,6 +39,8 @@ public final class AlertTweaksConfig {
 	public boolean threatIndicatorEnabled = true;
 	public boolean threatAdaptiveScale = true;
 	public float threatScale = 1.0F;
+	/** 0 puts the arrows right next to the crosshair, 1 pushes them out to the edge of the ring. */
+	public float threatDistance = 0.30F;
 
 	public static AlertTweaksConfig get() {
 		return instance;
@@ -98,6 +100,7 @@ public final class AlertTweaksConfig {
 		this.threatIndicatorEnabled = defaults.threatIndicatorEnabled;
 		this.threatAdaptiveScale = defaults.threatAdaptiveScale;
 		this.threatScale = defaults.threatScale;
+		this.threatDistance = defaults.threatDistance;
 	}
 
 	public int getVignetteColor(int alpha) {
@@ -118,5 +121,6 @@ public final class AlertTweaksConfig {
 		this.heartbeatSoundVolume = this.heartbeatSoundVolume <= 0.0F ? 0.65F : Mth.clamp(this.heartbeatSoundVolume, 0.05F, 1.0F);
 		this.heartbeatSoundIntensity = this.heartbeatSoundIntensity <= 0.0F ? 1.0F : Mth.clamp(this.heartbeatSoundIntensity, 0.5F, 2.0F);
 		this.threatScale = this.threatScale <= 0.0F ? 1.0F : Mth.clamp(this.threatScale, 0.5F, 2.5F);
+		this.threatDistance = Mth.clamp(this.threatDistance, 0.0F, 1.0F);
 	}
 }

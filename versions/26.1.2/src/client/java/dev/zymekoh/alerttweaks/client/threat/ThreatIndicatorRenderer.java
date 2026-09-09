@@ -23,7 +23,9 @@ public final class ThreatIndicatorRenderer {
 	private static final int SPRITE = 32;
 
 	private static final float BASE_ARROW_SIZE = 26.0F;
-	private static final float BASE_RADIUS = 46.0F;
+	/** Distance slider ends: 0 sits just clear of the crosshair, 1 pushes the arrows well out. */
+	private static final float MIN_RADIUS = 22.0F;
+	private static final float MAX_RADIUS = 100.0F;
 
 	private static final float SPAWN_MS = 190.0F;
 	private static final float BURST_MS = 340.0F;
@@ -101,7 +103,8 @@ public final class ThreatIndicatorRenderer {
 			return;
 		}
 
-		float radius = BASE_RADIUS * scale * (0.70F + 0.30F * ease + 0.22F * exit);
+		float baseRadius = Mth.lerp(AlertTweaksConfig.get().threatDistance, MIN_RADIUS, MAX_RADIUS);
+		float radius = baseRadius * scale * (0.70F + 0.30F * ease + 0.22F * exit);
 		float arrowSize = BASE_ARROW_SIZE * scale * (0.55F + 0.45F * ease) * breath * (1.0F + 0.30F * exit);
 		float radians = relativeDegrees * Mth.DEG_TO_RAD;
 		float x = centerX + Mth.sin(radians) * radius;
