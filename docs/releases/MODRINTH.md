@@ -1,4 +1,4 @@
-![Alert Tweaks KoHs]({ICON})
+![Alert Tweaks KoHs](https://raw.githubusercontent.com/kerlycanelita/Alert-Tweaks-KoHs/v2.0.0/docs/media/icon-animated.gif)
 
 <a href="https://discord.gg/GyqVQdgKWt"><img src="https://img.shields.io/badge/Join-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
   <a href="https://buymeacoffee.com/zymekohh"><img src="https://img.shields.io/badge/Buy_me_a_coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy me a coffee"></a>
@@ -9,7 +9,7 @@
 
 It used to be **Healt Alert Tweaks**. The low-health vignette and the heartbeat are still here, next to everything else.
 
-![A fight with alerts, the threat indicator and the low-health vignette]({IMG_FIGHT})
+![A fight with alerts, the threat indicator and the low-health vignette](https://cdn.modrinth.com/data/DNMK5gVu/images/030198a7313ba108ed4cc1acac03f58593688587.png)
 
 ## Alerts
 
@@ -26,19 +26,19 @@ Every alert has a **Test** button in the settings. Danger alerts can flash the e
 
 **Card**, **Compact**, **Icon**, **Text** and **Banner**. Pick one for each alert, or one for all of them.
 
-![The five looks on the HUD]({IMG_LOOKS})
+![The five looks on the HUD](https://cdn.modrinth.com/data/DNMK5gVu/images/c3f448f02a20db48fdd75353e7b26413dfc592ef.png)
 
 ## Put every alert where you want it
 
 **Edit positions** opens your own screen with your own HUD. Drag each alert to where it should appear, and drop one on another to stack them. A ten-second tutorial shows how the first time. **Play all** shows every alert in its place.
 
-![The position editor]({IMG_EDITOR})
+![The position editor](https://cdn.modrinth.com/data/DNMK5gVu/images/e1be3ffca9aa34b43340acc08351b502d597fe57.png)
 
 ## Threat indicator
 
 An arrow around the crosshair points at whoever just hit you and follows them for a few seconds. With several attackers you get one arrow each, up to four. Eight styles: Classic, Arc, Chevrons, Slash, Radar, Weapon (shows what hit you), Edge and Shard, with adjustable size and distance from the crosshair. It only uses the hit the server already tells you about: the attacker is never highlighted.
 
-![One arrow for each attacker, Weapon style]({IMG_THREATS})
+![One arrow for each attacker, Weapon style](https://cdn.modrinth.com/data/DNMK5gVu/images/104cea79121e0409ea87a23a632ddb42b8f41a77.png)
 
 ## Low health
 
