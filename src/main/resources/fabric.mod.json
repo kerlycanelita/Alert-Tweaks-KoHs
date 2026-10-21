@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Combat and survival alerts that tell you what the screen does not: low health, who hit you, totems, durability, effects, falls, cooldowns, supplies and server lag.",
+  "icon": "assets/alert_tweaks/icon.png",
+  "authors": [
+    "zymekoh"
+  ],
+  "contact": {
+    "sources": "https://github.com/kerlycanelita/Alert-Tweaks-KoHs",
+    "issues": "https://github.com/kerlycanelita/Alert-Tweaks-KoHs/issues"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "dev.zymekoh.alerttweaks.AlertTweaks"
+    ],
+    "client": [
+      "dev.zymekoh.alerttweaks.client.AlertTweaksClient"
+    ],
+    "modmenu": [
+      "dev.zymekoh.alerttweaks.client.gui.AlertTweaksModMenu"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "alert_tweaks.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_dep}",
+    "java": ">=${java_version}",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}

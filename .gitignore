@@ -18,3 +18,7 @@ runs/
 .classpath
 .project
 bin/
+
+# Release output and tool caches
+dist/
+__pycache__/

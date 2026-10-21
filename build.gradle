@@ -1,0 +1,90 @@
+// Per-version build. Stonecutter applies this to every node in settings.gradle;
+// minecraft_version, fabric_api_version, ... come from versions/<mc>/gradle.properties.
+boolean unobfuscated = !project.minecraft_version.startsWith('1.')
+apply plugin: unobfuscated ? 'net.fabricmc.fabric-loom' : 'net.fabricmc.fabric-loom-remap'
+
+version = "${project.mod_version}+mc${project.minecraft_version}"
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+	maven { name = 'Terraformers'; url = 'https://maven.terraformersmc.com/releases/' }
+}
+
+loom {
+	splitEnvironmentSourceSets()
+	mods {
+		"${project.mod_id}" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+fabricApi {
+	configureTests {
+		createSourceSet = true
+		modId = "${project.mod_id}_test"
+		enableGameTests = false
+		enableClientGameTests = true
+		eula = true
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	if (unobfuscated) {
+		implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+		implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+		compileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+		localRuntime "com.terraformersmc:modmenu:${project.modmenu_version}"
+	} else {
+		mappings loom.officialMojangMappings()
+		modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+		modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+		modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+		modLocalRuntime "com.terraformersmc:modmenu:${project.modmenu_version}"
+	}
+}
+
+def resourceProperties = [
+	version          : project.version,
+	mod_id           : project.mod_id,
+	mod_name         : project.mod_name,
+	minecraft_dep    : project.minecraft_dep,
+	loader_version   : project.loader_version,
+	java_version     : project.java_version
+]
+
+processResources {
+	inputs.properties resourceProperties
+	filesMatching('fabric.mod.json') {
+		expand resourceProperties
+	}
+}
+
+def javaVersion = Integer.parseInt(project.java_version)
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = javaVersion
+	options.encoding = 'UTF-8'
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.toVersion(javaVersion)
+	targetCompatibility = JavaVersion.toVersion(javaVersion)
+}
+
+// Every screen size the config screen claims to support is laid out and checked for overlaps
+// and rectangles leaving the screen. Pure Java: the layout class touches no Minecraft code.
+tasks.register('checkLayout', JavaExec) {
+	group = 'verification'
+	classpath = sourceSets.client.output + sourceSets.main.output
+	mainClass = 'dev.zymekoh.alerttweaks.client.gui.LayoutCheck'
+	dependsOn tasks.named('compileClientJava')
+}
+tasks.named('check') { dependsOn 'checkLayout' }

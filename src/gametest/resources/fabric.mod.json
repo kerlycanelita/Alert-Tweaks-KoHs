@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "alert_tweaks_test",
+  "version": "1.0.0",
+  "name": "Alert Tweaks client tests",
+  "environment": "client",
+  "entrypoints": {
+    "fabric-client-gametest": [
+      "dev.zymekoh.alerttweaks.test.PreviewRecorder",
+      "dev.zymekoh.alerttweaks.test.AlertTweaksClientTest",
+      "dev.zymekoh.alerttweaks.test.GalleryRecorder"
+    ]
+  }
+}

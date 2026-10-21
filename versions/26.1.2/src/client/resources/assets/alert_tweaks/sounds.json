@@ -1,8 +1,0 @@
-{
-  "heartbeat": {
-    "subtitle": "subtitles.alert_tweaks.heartbeat",
-    "sounds": [
-      "alert_tweaks:heartbeat"
-    ]
-  }
-}

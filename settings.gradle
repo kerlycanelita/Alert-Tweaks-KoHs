@@ -1,0 +1,23 @@
+pluginManagement {
+	repositories {
+		maven { name = 'Fabric'; url = 'https://maven.fabricmc.net/' }
+		maven { name = 'KikuGie Releases'; url = 'https://maven.kikugie.dev/releases' }
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
+plugins {
+	id 'dev.kikugie.stonecutter' version '0.9.6'
+}
+
+// One shared source tree (written for 26.2) built for every supported Minecraft version.
+// Per-version differences are //? comments in the source; versions/<mc>/gradle.properties holds each node's deps.
+stonecutter {
+	create(rootProject) {
+		versions('1.21.11', '26.1', '26.1.1', '26.1.2', '26.2', '26.3')
+		vcsVersion = '26.2'
+	}
+}
+
+rootProject.name = 'alert-tweaks'
